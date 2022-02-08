@@ -1,0 +1,141 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package servlet.servlet_tp3;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ *
+ * @author flvivet
+ */
+
+@Entity
+@Table
+public class TrainStation implements Serializable {
+    
+    /*@Embeddable
+    public class Address implements Serializable{
+        protected String road; 
+        protected String city;
+        protected int postal_code; 
+        
+        public Address(String road, String city, int postal_code) {
+            this.road = road;
+            this.city = city;
+            this.postal_code = postal_code;
+        }
+        
+        public Address() {
+        }
+    }*/
+    
+    @Id
+    @Column
+    private int id;
+    @Column
+    private String name;
+    /*@Embedded
+    private Address address;*/
+    @Column
+    private String road;
+    @Column
+    private String city;
+    @Column
+    private int postal_code;
+    @Column
+    private float price;
+    @JoinColumn
+    @ManyToOne(optional=true)
+    private Line line ;
+
+    public TrainStation() {
+    }
+
+
+    public TrainStation(int id, String name, String road, String city, int postal_code, float price) {
+        this.id = id;
+        this.name = name;
+        //this.address = new Address(road, city, postal_code);
+        this.road = road;
+        this.city = city;
+        this.postal_code = postal_code;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /*public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }*/
+
+    public String getRoad() {
+        return road;
+    }
+
+    public void setRoad(String road) {
+        this.road = road;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getPostal_code() {
+        return postal_code;
+    }
+
+    public void setPostal_code(int postal_code) {
+        this.postal_code = postal_code;
+    }
+    
+    
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    
+    public Line getLine() {
+        return line;
+    }
+
+    public void setLine(Line line) {
+        this.line = line;
+    }
+}
