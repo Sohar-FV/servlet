@@ -5,28 +5,21 @@
  */
 package servlet.servlet_tp3;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  *
  * @author flvivet
  */
-@WebServlet(name = "TrainStationServlet", urlPatterns = {"/TrainStation"})
-public class TrainStationServlet extends HttpServlet {
-    
-    
+@WebServlet(name = "NewTrainStation", urlPatterns = {"/NewTrainStation"})
+public class NewTrainStationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +38,10 @@ public class TrainStationServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TrainStationServlet</title>");            
+            out.println("<title>Servlet NewTrainStation</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet TrainStationServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NewTrainStation at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,19 +57,10 @@ public class TrainStationServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        AccessTrainJPA jpa = new AccessTrainJPA();
-        List<TrainStation> stations = jpa.getAllTrainStation();
-        
-        
-        request.setAttribute("stations", stations);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/stations.jsp");
-        dispatcher.forward(request, response);
-        
-        
-        
+        response.sendRedirect("newTrain.jsp");
     }
 
     /**
@@ -88,9 +72,24 @@ public class TrainStationServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        if ("POST".equalsIgnoreCase(request.getMethod())) 
+        {
+            
+           int id = new Random().nextInt(10000);
+           String name = request.getParameter("name");          
+           String road = request.getParameter("road");          
+           String city  = request.getParameter("city");         
+           int postal_code = Integer.parseInt(request.getParameter("postal_code"));        
+           float price = Float.parseFloat(request.getParameter("price"));
+               
+           AccessTrainJPA jpa = new AccessTrainJPA();
+           jpa.createTrainStation(id, name, road, city , postal_code, price);
+           
+           response.sendRedirect("index.html");
+        }
+            
     }
 
     /**

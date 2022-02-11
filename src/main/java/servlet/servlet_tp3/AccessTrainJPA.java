@@ -11,6 +11,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 /**
  *
@@ -34,9 +38,17 @@ public class AccessTrainJPA {
     
     public List<TrainStation> getAllTrainStation() {
         EntityManager manager = this.getEm();
-        Query query = manager.createQuery("Select * FROM TrainStation");
-        return (List<TrainStation>) query.getResultList();
         
+        CriteriaBuilder cb = manager.getCriteriaBuilder();
+        CriteriaQuery<TrainStation> cq = cb.createQuery(TrainStation.class);
+        Root<TrainStation> rootEntry = cq.from(TrainStation.class);
+        CriteriaQuery<TrainStation> all = cq.select(rootEntry);
+        TypedQuery<TrainStation> allQuery = manager.createQuery(all);
+        
+        List<TrainStation> result = allQuery.getResultList();
+        
+        return result;
+ 
     }
     
     public TrainStation createTrainStation(int id, String name, String road, String city, int postal_code, float price){

@@ -113,11 +113,11 @@ public class TrainStation implements Serializable {
         this.city = city;
     }
 
-    public int getPostal_code() {
+    public int getPostalCode() {
         return postal_code;
     }
 
-    public void setPostal_code(int postal_code) {
+    public void setPostalCode(int postal_code) {
         this.postal_code = postal_code;
     }
     
