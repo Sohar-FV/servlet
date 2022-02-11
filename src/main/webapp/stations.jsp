@@ -18,19 +18,28 @@
         <% List<TrainStation> stations = (List<TrainStation>)request.getAttribute("stations");
             System.out.println(stations);%>
         
-        
-        <table>
-        <% for(TrainStation station : stations) { %>
-        
-            <tr>      
-                <td><%= station.getName() %></td>
-                <td><%= station.getRoad() %></td>
-                <td><%= station.getCity() %></td>
-                <td><%= station.getPostalCode() %></td>
-                <td><%= station.getPrice() %></</td>  
-            </tr>
-        <% } %>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <th>Name</th>
+                    <th>Road</th>
+                    <th>City</th>
+                    <th>Postal Code</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+            <% for(TrainStation station : stations) { %>
+                <tr>      
+                    <td><%= station.getName() %></td>
+                    <td><%= station.getRoad() %></td>
+                    <td><%= station.getCity() %></td>
+                    <td><%= station.getPostalCode() %></td>
+                    <td><%= station.getPrice() %></</td>  
+                </tr>
+            <% } %>
+            </tbody>
+            </table>
+        </div>
         
     
 
