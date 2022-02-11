@@ -79,6 +79,13 @@ public class AccessTrainJPA {
         
         return updateCount;
     }
+
+    public TrainStation getStationById(int id) {
+        
+        EntityManager manager = this.getEm();
+        TrainStation station = manager.find(TrainStation.class, id);
+        return station;
+    }
     
 }
 

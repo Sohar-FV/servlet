@@ -14,12 +14,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
  * @author flvivet
  */
-@WebServlet(name = "TravelServlet", urlPatterns = {"/NewTravel"})
+@WebServlet(name = "NewTravelServlet", urlPatterns = {"/NewTravel"})
 public class NewTravelServlet extends HttpServlet {
 
     /**
@@ -60,7 +61,7 @@ public class NewTravelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        System.out.println("copucopu");
         AccessTrainJPA jpa = new AccessTrainJPA();
         List<TrainStation> stations = jpa.getAllTrainStation();
         
@@ -81,7 +82,21 @@ public class NewTravelServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        System.out.println(request.getParameter("depart_station"));
+        
+            int id = new Random().nextInt(1000000);
+            int depart_station_id = Integer.parseInt(request.getParameter("depart_station"));          
+            int arrival_station_id = Integer.parseInt(request.getParameter("arrival_station")); 
+           
+            AccessTrainJPA trainJpa = new AccessTrainJPA();
+           
+            TrainStation departureStation = trainJpa.getStationById(depart_station_id);
+            TrainStation arrivalStation = trainJpa.getStationById(arrival_station_id);
+                
+            AccessTravelJPA travelJpa = new AccessTravelJPA();
+            travelJpa.createTravel(id, departureStation, arrivalStation);
+           
+            response.sendRedirect("travels.jsp");
     }
 
     /**

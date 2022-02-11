@@ -86,7 +86,7 @@ public class NewTrainStationServlet extends HttpServlet {
            AccessTrainJPA jpa = new AccessTrainJPA();
            jpa.createTrainStation(id, name, road, city , postal_code, price);
            
-           response.sendRedirect("index.jsp");
+           response.sendRedirect("stations.jsp");
             
     }
 

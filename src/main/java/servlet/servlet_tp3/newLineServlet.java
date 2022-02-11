@@ -20,8 +20,8 @@ import java.util.Random;
  *
  * @author flvivet
  */
-@WebServlet(name = "newLineServlet", urlPatterns = {"/newLine"})
-public class newLineServlet extends HttpServlet {
+@WebServlet(name = "NewLineServlet", urlPatterns = {"/NewLine"})
+public class NewLineServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -91,11 +91,9 @@ public class newLineServlet extends HttpServlet {
         
         for(int i=0; i< stationsID.length ; i++){
             int res = trainJpa.updateLineForStation(Integer.parseInt(stationsID[i]), id);
-            if (res != 0 ){
-                
-                System.out.println("yey");
-            }
         } 
+        
+        response.sendRedirect("lines.jsp");
     }
 
     /**

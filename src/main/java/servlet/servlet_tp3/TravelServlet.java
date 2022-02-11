@@ -5,13 +5,15 @@
  */
 package servlet.servlet_tp3;
 
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -58,7 +60,13 @@ public class TravelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        AccessTravelJPA jpa = new AccessTravelJPA();
+        List<Travel> travels = jpa.getAllTravels();
+        
+        request.setAttribute("travels", travels);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/travels.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**

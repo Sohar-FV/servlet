@@ -24,7 +24,7 @@
         <div class="table-responsive">
             
             Cochez les stations à ajouter à la ligne :
-            <form action="http://localhost:8080/servlet_tp3/newLine" method="POST">
+            <form action="http://localhost:8080/servlet_tp3/NewLine" method="POST">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th>Name</th>

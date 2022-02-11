@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" 
-             xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="TrainPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-    <class>Line</class>
-    <class>TrainStation</class>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://berlin.iut.local:5432/dbflvivet"/>
-      <property name="javax.persistence.jdbc.user" value="flvivet"/>
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="servletVIVET"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-    </properties>
-  </persistence-unit>
-</persistence>-->
 
 
 
@@ -29,6 +11,7 @@
         
         <class>servlet.servlet_tp3.TrainStation</class>
         <class>servlet.servlet_tp3.Line</class>
+        <class>servlet.servlet_tp3.Travel</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
