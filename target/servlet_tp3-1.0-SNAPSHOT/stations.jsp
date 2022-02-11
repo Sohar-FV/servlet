@@ -12,9 +12,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
     </head>
     
-        <h1>Salut a tous les amis</h1>
+        <h1>Stations du réseau</h1>
         <% List<TrainStation> stations = (List<TrainStation>)request.getAttribute("stations");
             System.out.println(stations);%>
         
@@ -40,6 +42,8 @@
             </tbody>
             </table>
         </div>
+            
+        <a class="btn btn-primary" href="http://localhost:8080/servlet_tp3/NewTrainStation">Ajouter une station</a>
         
         
     
