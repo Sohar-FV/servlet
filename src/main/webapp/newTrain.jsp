@@ -13,6 +13,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
+        
+        <a class="btn btn-secondary m-2 p-2" href="http://localhost:8080/servlet_tp3/">Menu</a>
+        
         <h1>Création d'une nouvelle station de train :</h1>
         <form action="http://localhost:8080/servlet_tp3/NewTrainStation" method="POST">
             <div class="form-group col-md-6">

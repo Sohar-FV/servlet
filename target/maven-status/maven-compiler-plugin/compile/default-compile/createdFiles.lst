@@ -2,6 +2,5 @@ servlet/servlet_tp3/NewTrainStationServlet.class
 servlet/servlet_tp3/Line.class
 servlet/servlet_tp3/Travel.class
 servlet/servlet_tp3/TrainStation.class
-.netbeans_automatic_build
 servlet/servlet_tp3/AccessTrainJPA.class
 servlet/servlet_tp3/TrainStationServlet.class

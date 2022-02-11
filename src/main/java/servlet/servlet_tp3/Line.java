@@ -31,8 +31,9 @@ public class Line implements Serializable {
                mappedBy="line")
     private List<TrainStation> list;
 
-    public Line() {
-        list = new ArrayList<>();
+    public Line(int id) {
+        this.id = id;
+        this.list = new ArrayList<>();
     }
     
     public void addStation(TrainStation station) {

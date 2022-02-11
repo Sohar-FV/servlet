@@ -10,6 +10,7 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -61,6 +62,22 @@ public class AccessTrainJPA {
             trans.commit();
         
         return ts;
+    }
+    
+    public int updateLineForStation(int idStation, int idLine){
+        EntityManager manager = this.getEm();
+        EntityTransaction trans = null;
+        trans = getEm().getTransaction();    
+        trans.begin(); 
+            
+        Query query = manager.createNativeQuery(
+            "UPDATE TrainStation SET line_id = "+idLine+" WHERE id = "+idStation);
+        int updateCount = query.executeUpdate();
+        
+        
+        trans.commit();
+        
+        return updateCount;
     }
     
 }

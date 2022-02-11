@@ -4,6 +4,7 @@
     Author     : flvivet
 --%>
 
+<%@page import="servlet.servlet_tp3.Line"%>
 <%@page import="java.util.List"%>
 <%@page import="servlet.servlet_tp3.TrainStation"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,9 +16,10 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     
+        <a class="btn btn-secondary m-2 p-2" href="http://localhost:8080/servlet_tp3/">Menu</a>
+    
         <h1>Stations du réseau</h1>
-        <% List<TrainStation> stations = (List<TrainStation>)request.getAttribute("stations");
-            System.out.println(stations);%>
+        <% List<TrainStation> stations = (List<TrainStation>)request.getAttribute("stations");%>
         
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -25,7 +27,8 @@
                     <th>Name</th>
                     <th>Road</th>
                     <th>City</th>
-                    <th>Postal Code</th>
+                    <th>Postal Code</th>                  
+                    <th>Line</th>
                     <th>Price</th>
                 </thead>
                 <tbody>
@@ -35,6 +38,17 @@
                     <td><%= station.getRoad() %></td>
                     <td><%= station.getCity() %></td>
                     <td><%= station.getPostalCode() %></td>
+                    <td>
+                        <% Line line = station.getLine();
+                           String result;
+                           if(station.getLine() == null) {
+                                 result = "Non affecté";
+                            } else {
+                                 result = String.valueOf(line.getId());
+                            }%>
+                            
+                        <%= result %>
+                    </td>
                     <td><%= station.getPrice() %></</td>  
                 </tr>
             <% } %>

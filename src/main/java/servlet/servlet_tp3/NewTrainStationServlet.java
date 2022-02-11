@@ -82,6 +82,7 @@ public class NewTrainStationServlet extends HttpServlet {
            int postal_code = Integer.parseInt(request.getParameter("postal_code"));        
            float price = Float.parseFloat(request.getParameter("price"));
                
+           System.out.println("hey");
            AccessTrainJPA jpa = new AccessTrainJPA();
            jpa.createTrainStation(id, name, road, city , postal_code, price);
            

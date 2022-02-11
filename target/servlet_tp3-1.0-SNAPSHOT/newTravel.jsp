@@ -16,7 +16,7 @@
     <body>
         <% List<TrainStation> stations = (List<TrainStation>)request.getAttribute("stations");%>
         
-        
+        <a class="btn btn-secondary m-2 p-2" href="http://localhost:8080/servlet_tp3/">Menu</a>
         
         
         <h1>Création d'un nouveau voyage</h1>
@@ -38,7 +38,7 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <input class="btn btn-primary" type="submit" value="Ajouter la station" required></input>
+                <input class="btn btn-primary" type="submit" value="Créer le voyage" required></input>
             </div>
         </form>
     </body>
