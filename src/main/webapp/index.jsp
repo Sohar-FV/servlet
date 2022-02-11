@@ -14,7 +14,6 @@
     <body>
         <h1>Hello World!</h1>
         
-        <a href="http://localhost:8080/servlet_tp3/TrainStation">Station</a>
-        <a href="http://localhost:8080/servlet_tp3/NewTrainStation">Ajouter une station</a>
+        <a href="http://localhost:8080/servlet_tp3/TrainStation">Gérer les lignes et les stations</a>
     </body>
 </html>
