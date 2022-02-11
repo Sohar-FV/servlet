@@ -15,44 +15,6 @@
     </properties>
     
     <dependencies>
-        
-        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
-        </dependency>
-        
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.3.2</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa-persistence</artifactId>
-            <version>3.2.0</version>
-        </dependency>
-
-
-
-        <!--
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
-        </dependency>
-        
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId> 
@@ -60,29 +22,34 @@
         </dependency>
         
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0.1</version>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
-        
+
+        <dependency>
+            <groupId>jakarta.ejb</groupId>
+            <artifactId>jakarta.ejb-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.3.1</version>
-          </dependency>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.tomee</groupId>
             <artifactId>apache-tomee</artifactId>
             <version>9.0.0-M7</version>
         </dependency>
-        
-        
-        -->
-        
     </dependencies>
 
     <build>
+        
+
+        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -96,6 +63,23 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.openjpa</groupId>
+                <artifactId>openjpa-maven-plugin</artifactId>
+                <version>3.1.2</version>
+
+                <executions>
+                    <execution>
+                        <id>enhancer</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -126,25 +110,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-        <groupId>org.apache.openjpa</groupId>
-        <artifactId>openjpa-maven-plugin</artifactId>
-        <version>3.1.2</version>
-        <configuration>
-            <addDefaultConstructor>true</addDefaultConstructor>               
-            <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
-        </configuration>
-        <executions>
-            <execution>
-                <id>enhancer</id>
-                <phase>process-classes</phase>
-                <goals>
-                    <goal>enhance</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
         </plugins>
     </build>
-
 </project>

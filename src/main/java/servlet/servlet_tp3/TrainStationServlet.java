@@ -12,6 +12,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -56,10 +58,10 @@ public class TrainStationServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccessTrainJPA jpa = new AccessTrainJPA();
-        jpa.createTrainStation(1, "bob", "rue", "ville", 63000, (float) 12.0);
+        //AccessTrainJPA jpa = new AccessTrainJPA();
+        //jpa.createTrainStation(1, "bob", "rue", "ville", 63000, (float) 12.0);
         
         response.sendRedirect("newTrain.jsp");
     }
@@ -73,9 +75,28 @@ public class TrainStationServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if ("POST".equalsIgnoreCase(request.getMethod())) 
+        {
+           String name = request.getParameter("name");
+           
+           String road = request.getParameter("road");
+           
+           String city  = request.getParameter("city");
+           
+           int postal_code = Integer.parseInt(request.getParameter("postal_code"));
+           
+           float price = Float.parseFloat(request.getParameter("price"));
+           
+           int id = new Random().nextInt(10000);
+           
+           AccessTrainJPA jpa = new AccessTrainJPA();
+           jpa.createTrainStation(id, name, road, city , postal_code, price);
+           
+           response.sendRedirect("index.html");
+        }
+            
     }
 
     /**
