@@ -25,7 +25,7 @@
             <label for="price">Price :</label>
             <input type="number" name="price"></input>
             
-            <input type="submit" value="Cliquez bande de salopes"></input>
+            <input type="submit" value="Ajouter la station"></input>
         </form>
     </body>
 </html>

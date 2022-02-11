@@ -74,8 +74,6 @@ public class NewTrainStationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if ("POST".equalsIgnoreCase(request.getMethod())) 
-        {
             
            int id = new Random().nextInt(10000);
            String name = request.getParameter("name");          
@@ -87,8 +85,7 @@ public class NewTrainStationServlet extends HttpServlet {
            AccessTrainJPA jpa = new AccessTrainJPA();
            jpa.createTrainStation(id, name, road, city , postal_code, price);
            
-           response.sendRedirect("index.html");
-        }
+           response.sendRedirect("index.jsp");
             
     }
 
