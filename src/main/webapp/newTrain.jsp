@@ -12,20 +12,31 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>I lkei trians</h1>
-        <form action="http://localhost:8080/servlet_tp3/TrainStation" method="POST">
-            <label for="name">Name :</label>
-            <input type="text" name="name"></input>
-            <label for="road">Road :</label>
-            <input type="text" name="road"></input>
-            <label for="city">City :</label>
-            <input type="text" name="city"></input>
-            <label for="postal_code">Postal Code :</label>
-            <input type="number" name="postal_code"></input>
-            <label for="price">Price :</label>
-            <input type="number" name="price"></input>
-            
-            <input type="submit" value="Ajouter la station"></input>
+        <h1>Création d'une nouvelle station de train :</h1>
+        <form action="http://localhost:8080/servlet_tp3/NewTrainStation" method="POST">
+            <div>
+                <label for="name">Name :</label>
+                <input type="text" name="name"></input>
+            </div>
+            <div>
+                <label for="road">Road :</label>
+                <input type="text" name="road"></input>
+            </div>
+            <div>
+                <label for="city">City :</label>
+                <input type="text" name="city"></input>
+            </div>
+            <div>
+                <label for="postal_code">Postal Code :</label>
+                <input type="number" name="postal_code"></input>
+            </div>
+            <div>
+                <label for="price">Price :</label>
+                <input type="number" name="price"></input>
+            </div>
+            <div>
+                <input type="submit" value="Ajouter la station"></input>
+            </div>
         </form>
     </body>
 </html>
