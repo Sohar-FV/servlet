@@ -93,7 +93,15 @@ public class NewLineServlet extends HttpServlet {
             int res = trainJpa.updateLineForStation(Integer.parseInt(stationsID[i]), id);
         } 
         
-        response.sendRedirect("lines.jsp");
+        List<Line> lines = lineJpa.getAllLines();
+        
+        List<TrainStation> stations = trainJpa.getAllTrainStation();
+        
+        
+        request.setAttribute("lines", lines);
+        request.setAttribute("stations", stations);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/lines.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**

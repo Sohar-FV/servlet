@@ -21,7 +21,7 @@
         
         
         <h1>Création d'un nouveau voyage</h1>
-        <form action="http://localhost:8080/servlet_tp3/NewTrainStation" method="POST">
+        <form action="http://localhost:8080/servlet_tp3/NewTravel" method="POST">
             <div class="form-group col-md-6">
                 <label for="name">Station de départ :</label>
                 <select class="form-control" type="text" name="depart_station" required>

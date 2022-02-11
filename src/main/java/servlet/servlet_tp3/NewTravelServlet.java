@@ -61,7 +61,6 @@ public class NewTravelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("copucopu");
         AccessTrainJPA jpa = new AccessTrainJPA();
         List<TrainStation> stations = jpa.getAllTrainStation();
         
@@ -82,7 +81,6 @@ public class NewTravelServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println(request.getParameter("depart_station"));
         
             int id = new Random().nextInt(1000000);
             int depart_station_id = Integer.parseInt(request.getParameter("depart_station"));          
@@ -96,7 +94,11 @@ public class NewTravelServlet extends HttpServlet {
             AccessTravelJPA travelJpa = new AccessTravelJPA();
             travelJpa.createTravel(id, departureStation, arrivalStation);
            
-            response.sendRedirect("travels.jsp");
+            List<Travel> travels = travelJpa.getAllTravels();
+        
+        request.setAttribute("travels", travels);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/travels.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**

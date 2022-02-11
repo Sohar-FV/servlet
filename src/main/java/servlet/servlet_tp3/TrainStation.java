@@ -28,7 +28,11 @@ import jakarta.persistence.Table;
 @Table
 public class TrainStation implements Serializable {
     
-    /*@Embeddable
+    /*
+    On a eu des problèmes avec l'objet adresse, donc nous l'avons commenté
+    et l'avons remplacé par les différents champs la composant.
+    
+    @Embeddable
     public class Address implements Serializable{
         protected String road; 
         protected String city;

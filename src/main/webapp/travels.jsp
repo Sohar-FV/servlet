@@ -29,8 +29,8 @@
                 <tbody>
             <% for(Travel travel : travels) { %>
                 <tr>      
-                    <td><%= travel.getDepartureStation() %></td>
-                    <td><%= travel.getArrivalStation() %></td>
+                    <td><%= travel.getDepartureStation().getName() %></td>
+                    <td><%= travel.getArrivalStation().getName() %></td>
                     <td><%= travel.getPrice() %></</td>  
                 </tr>
             <% } %>
